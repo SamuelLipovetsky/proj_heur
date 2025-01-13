@@ -199,7 +199,7 @@ set<int> quasiCliqueThread(int maxTime, double threshold, set<int> &initialCliqu
     auto startTime = steady_clock::now();
 
    
-    int currentEdges = calculateDensity(currentClique); // Initial edge count in the current clique
+    int currentEdges = calculateDensity(currentClique); 
 
     while (duration_cast<seconds>(steady_clock::now() - startTime).count() < maxTime)
     {
@@ -242,10 +242,10 @@ set<int> quasiCliqueThread(int maxTime, double threshold, set<int> &initialCliqu
        
         if (!improved && !currentClique.empty())
         {
-            // Randomly select a node from the current clique to remove
+         
             auto it = currentClique.begin();
-            advance(it, rand() % currentClique.size());  // Randomly select a node
-            currentClique.erase(it);  // Remove the selected node
+            advance(it, rand() % currentClique.size());  
+            currentClique.erase(it);  
         }
 
         
@@ -277,7 +277,7 @@ bool isQuasiClique(const set<int> &clique, double threshold, int **neighbor, int
 
 set<int> mergeCliques(set<int> &clique1, set<int> &clique2, set<int> &clique3, double threshold, int **neighbor, int *degree)
 {
-    // Step 1: Union all three cliques
+    
     set<int> mergedClique = clique1;
     mergedClique.insert(clique2.begin(), clique2.end());
     mergedClique.insert(clique3.begin(), clique3.end());
@@ -303,11 +303,11 @@ set<int> mergeCliques(set<int> &clique1, set<int> &clique2, set<int> &clique3, d
             nodeNeighbors.push_back({node, neighborCount});
         }
 
-        // Sort the nodes based on their neighbor count in the current clique (ascending)
+      
         sort(nodeNeighbors.begin(), nodeNeighbors.end(), [](const pair<int, int> &a, const pair<int, int> &b)
              { return a.second < b.second; });
 
-        // Remove the node with the fewest neighbors
+       
         currentClique.erase(nodeNeighbors.front().first);
     }
 
