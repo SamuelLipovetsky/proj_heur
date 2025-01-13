@@ -1,22 +1,13 @@
-# NuQClq is a solver for Maximum Quasi-Clique Problem.
+compilando:
+    cd ./base_heuristic
+    make
+    depois
+    cd ./proj_heuristic
+    make
+agora os executaveis foram compilados e podemos rodar run_experiments.sh
 
-## 1. The input format
-The input graph is asked to be in DIMACS ascii format for undirected graphs.
-
-
-A small example is given as follow:
-```
-p edge 4 3
-e 1 2
-e 1 3
-e 2 4
-```
-
-## 2. Usage
-The command to run NuQClq is:
-```
-./nuqclq <filename> <cutoff time (s)> <para_gamma> <random seed>
-```
-NuQClq terminates when reaching the cutoff time.
-# proj_heur
-# proj_heur
+o run_experiments gera uma saida "results.txt" que executa tanto a heuristica base 
+como a nossa heuristica para todas os dados que estão em "./data".
+Em run_experiments tem um loop que varia o parametro alfa (densidade minima das cliques)
+e o tempo limite de execução. Ainda, como as duas heuristicas possuim aleatoriedade, tem
+o campo seed que controla isso.
